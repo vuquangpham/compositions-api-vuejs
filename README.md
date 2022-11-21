@@ -21,9 +21,6 @@ We will merge: data, computed, watcher, methods into **setup()**
 **value** -> `reactive` value that **Vue** can find out when we change it, be able to `watch` it and is able to `update`
 the template at the DOM when that value `changed`.
 
-`ref` -> an object -> can access **value** through `.value`, but we just access variable into the template (no need
-to `.value`)
-
 ### reactive
 
 as the same as `ref`, but doesn't have the `value` wrapper in Proxy Object.
@@ -179,3 +176,27 @@ export default {
 }
 
 ```
+
+## Routing
+
+use Hooks (Composable)
+
+```javascript
+import {useRoute, useRouter} from 'vue-router';
+
+const route = useRoute();
+// fullPath, hash, matched, meta, name, path, params, query
+
+const router = useRouter();
+// 
+```
+
+## Vuex
+
+```javascript
+import {useStore} from 'vuex'
+
+const store = useStore();
+// dispatch, commit, getters
+```
+
