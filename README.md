@@ -200,3 +200,53 @@ const store = useStore();
 // dispatch, commit, getters
 ```
 
+## Mixins
+
+We have `AddUser` and `DeleteUser` use the same logic => use Mixins to reuse that code.
+
+> ⚠ : Components can not be shared through Mixins
+
+We can merge mixins with original data
+
+```javascript
+import alertMixin from "@/mixins/alert";
+
+export default {
+    components: {
+        UserAlert,
+    },
+    data(){
+        title: 'Work fine'
+    },
+    mixins: [alertMixin] // automatically merge with the options in component
+    // the option in component will override mixin
+}
+```
+
+### Global Mixins
+
+Logging for analytis functionality, to know when a component was mounted.
+
+```javascript
+// globalMixins.js
+export default {
+    mounted(){
+        // some logic
+    }
+}
+
+
+// Vue.app
+import globalMixin from './mixins/globalMixins.js';
+
+app.mixin(globalMixinl)
+
+```
+
+### Mixins Disadvantages
+
+Bigger Apps -> Many `mixins` in 1 component -> `showAlert` -> belong to what mixins ?????????
+
+> Harder to manage
+
+## Custom Hooks
