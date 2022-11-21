@@ -1,30 +1,44 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <section class="container">
+    <h2>{{ userName }}</h2>
+  </section>
 </template>
 
+<script>
+import {ref} from "vue";
+
+export default {
+  props: [],
+  emits: [],
+  setup(){
+    const userName = ref('Maximilian');
+    setTimeout(() => {
+      userName.value = 'Max';
+    }, 2000);
+    return {userName};
+  }
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+  box-sizing:border-box;
 }
 
-nav {
-  padding: 30px;
+html {
+  font-family:sans-serif;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+body {
+  margin:0;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+.container {
+  margin:3rem auto;
+  max-width:30rem;
+  border-radius:12px;
+  box-shadow:0 2px 8px rgba(0, 0, 0, 0.26);
+  padding:1rem;
+  text-align:center;
 }
 </style>
