@@ -8,6 +8,9 @@ Options API is just fine, but we might have two main limitations/issues when bui
     - data(), computed, methods, watchers -> reflected to the same data are split across these different options
     - A bit annoying to manage (change something in data -> change computed -> change methods -> change watcher 😢) ->
       Scroll a lots.
+
+    - ![img.png](img.png)
+
 - Re-using logic across components can be tricky or cumbersome
 
 ## Compositions API
@@ -250,3 +253,43 @@ Bigger Apps -> Many `mixins` in 1 component -> `showAlert` -> belong to what mix
 > Harder to manage
 
 ## Custom Hooks
+
+We can reuse the logic base on `Custom Hooks` feature (or also known as Composable)
+
+```javascript
+
+// custom hook
+import {ref, computed} from "vue";
+
+export default function(){
+    const alertIsVisible = ref(false);
+    // computed
+    const getAlertStatus = computed(() => alertIsVisible)
+
+    // methods
+    function showAlert(){
+        alertIsVisible.value = true;
+    }
+
+    function hideAlert(){
+        alertIsVisible.value = false;
+    }
+
+    return {
+        getAlertStatus,
+        showAlert,
+        hideAlert
+    };
+}
+
+// in component
+import useAlert from '@/hooks/userAlert';
+
+<script setup>
+    const {getAlertStatus, showAlert, hideAlert} = useAlert()
+</script>
+
+<template>
+    <p>Status: {{getAlertStatus}} </p>
+</template>
+```
