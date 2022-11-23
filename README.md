@@ -58,7 +58,7 @@ return {
 A function was created by VueJS engine. Computed under the hood is just a `ref` (but `read` only).
 
 ```javascript
-    const fullName = computed(() => {
+const fullName = computed(() => {
     return firstName + ' ' + lastName;
 })
 ```
@@ -68,7 +68,7 @@ A function was created by VueJS engine. Computed under the hood is just a `ref` 
 A function was created by VueJS engine.
 
 ```javascript
-    const state = ref('');
+const state = ref('');
 
 watch(state, (newValue, oldValue) => {
     // function when state change
@@ -79,7 +79,7 @@ watch(state, (newValue, oldValue) => {
 With watch function, we can gain more dependency (by passing an array)
 
 ```javascript
-    const state = ref('');
+const state = ref('');
 const another = ref('');
 
 watch([state, another], (newValue, oldValue) => {
@@ -188,7 +188,7 @@ const route = useRoute();
 // fullPath, hash, matched, meta, name, path, params, query
 
 const router = useRouter();
-// 
+// replace, redirect, ...
 ```
 
 ## Vuex
