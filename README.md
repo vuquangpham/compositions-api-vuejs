@@ -1,4 +1,4 @@
-# Compositions API
+# Composition API
 
 ## Why we have to use this?
 
@@ -13,7 +13,7 @@ Options API is just fine, but we might have two main limitations/issues when bui
 
 - Re-using logic across components can be tricky or cumbersome
 
-## Compositions API
+## Composition API
 
 We will merge: data, computed, watcher, methods into **setup()**
 
